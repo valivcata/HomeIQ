@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-import DashboardAdmin from "./Pages/DashboardAdmin";
-import DashboardUser from "./Pages/DashboardUser";
+import DashboardAdmin from "./pages/DashboardAdmin";
+import DashboardUser from "./pages/DashboardUser";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/Home";
+import CreateUser from "./pages/CreateUser";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
               <DashboardAdmin />
             </ProtectedRoute>
           }
+        />
+        <Route
+         path="/admin/create-user"
+         element={
+        <ProtectedRoute role="Admin">
+        <CreateUser />
+        </ProtectedRoute>
+        }
         />
         <Route
           path="/user"

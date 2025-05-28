@@ -7,9 +7,13 @@ import {
 } from "@mui/material";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export default function DashboardUser() {
   const [lightStatus, setLightStatus] = useState<"on" | "off" | "loading" | "error">("off");
+const navigate = useNavigate();
+
 
   const toggleLight = async () => {
     setLightStatus("loading");
@@ -21,6 +25,11 @@ export default function DashboardUser() {
       setLightStatus("error");
       console.error("Eroare la backend/ESP:", error);
     }
+  };
+
+      const logout = () => {
+    localStorage.removeItem("token");  // Șterge tokenul
+    navigate("/");                     // Redirect către homepage
   };
 
   const getButtonColor = () => {
@@ -83,6 +92,14 @@ export default function DashboardUser() {
           ) : (
             renderLabel()
           )}
+        </Button>
+         <Button
+          onClick={logout}
+          variant="outlined"
+          color="error"
+          style={{ minWidth: "180px" }}
+        >
+          Logout
         </Button>
       </Stack>
     </div>
