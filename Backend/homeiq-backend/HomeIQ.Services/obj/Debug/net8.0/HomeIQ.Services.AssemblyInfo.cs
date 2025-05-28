@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomeIQ.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba34063cd88e8f380591515f565d4f1f3ed48f4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomeIQ.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomeIQ.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
