@@ -1,10 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\catal\\Desktop\\IP\\Backend\\homeiq-backend\\HomeIQ.API\\",
+  "WorkspaceRootPath": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|c:\\users\\catal\\desktop\\ip\\backend\\homeiq-backend\\homeiq.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{137BA461-B5B5-47F7-BB7F-23E03BD654A9}|..\\HomeIQ.Services\\HomeIQ.Services.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.services\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BA461-B5B5-47F7-BB7F-23E03BD654A9}|..\\HomeIQ.Services\\HomeIQ.Services.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.services\\services\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\dtos\\newuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5F9AF09F-1799-4856-8E6A-584C0A481BDE}|HomeIQ.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8970BBC8-62CA-4333-A676-DE663ACE854A}|..\\HomeIQ.Models\\HomeIQ.Models.csproj|c:\\users\\alexa\\desktop\\homeiq\\homeiq\\backend\\homeiq-backend\\homeiq.models\\homeiq.models.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +50,167 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\NewUserDto.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\DTOs\\NewUserDto.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\NewUserDto.cs",
+              "RelativeToolTip": "..\\HomeIQ.Models\\DTOs\\NewUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:39:18.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\DTOs\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "..\\HomeIQ.Models\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:37:51.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\DTOs\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\DTOs\\RegisterDto.cs",
+              "RelativeToolTip": "..\\HomeIQ.Models\\DTOs\\RegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:38:27.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\Models\\ApplicationDBContext.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\Models\\ApplicationDBContext.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\Models\\ApplicationDBContext.cs",
+              "RelativeToolTip": "..\\HomeIQ.Models\\Models\\ApplicationDBContext.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBMAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:44:34.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Services\\Services\\ITokenService.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Services\\Services\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Services\\Services\\ITokenService.cs",
+              "RelativeToolTip": "..\\HomeIQ.Services\\Services\\ITokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:34:02.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Services\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Services\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Services\\Services\\TokenService.cs",
+              "RelativeToolTip": "..\\HomeIQ.Services\\Services\\TokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:32:04.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\catal\\Desktop\\IP\\Backend\\homeiq-backend\\HomeIQ.API\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\catal\\Desktop\\IP\\Backend\\homeiq-backend\\HomeIQ.API\\Program.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T22:24:59.664Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:41:29.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\Models\\AppUser.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\Models\\AppUser.cs",
+              "RelativeToolTip": "..\\HomeIQ.Models\\Models\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:36:12.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T18:43:19.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-28T18:45:21.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeIQ.Models",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\HomeIQ.Models.csproj",
+              "RelativeDocumentMoniker": "..\\HomeIQ.Models\\HomeIQ.Models.csproj",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\HomeIq\\HomeIQ\\Backend\\homeiq-backend\\HomeIQ.Models\\HomeIQ.Models.csproj",
+              "RelativeToolTip": "..\\HomeIQ.Models\\HomeIQ.Models.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-28T18:25:17.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

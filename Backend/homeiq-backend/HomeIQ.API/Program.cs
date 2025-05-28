@@ -1,7 +1,6 @@
-using api.Data;
-using api.Interfaces;
-using api.Models;
-using api.Service;
+﻿using HomeIQ.Models.Models;
+using HomeIQ.Services.Services;
+using HomeIQ.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -96,7 +95,7 @@ using (var scope = app.Services.CreateScope())
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    // Creeaz? rolurile dac? nu exist?
+    // Creează rolurile dacă nu există
     string[] roles = new[] { "Admin", "User" };
     foreach (var role in roles)
     {
@@ -106,7 +105,7 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    // Creeaz? un admin dac? nu exist?
+    // Creează un admin dacă nu există
     string adminEmail = "admin@home.local";
     var admin = await userManager.FindByEmailAsync(adminEmail);
     if (admin == null)

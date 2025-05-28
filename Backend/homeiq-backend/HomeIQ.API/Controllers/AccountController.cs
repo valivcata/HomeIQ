@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using api.Dto;
-using api.Models;
+using HomeIQ.Models.DTOs;
+using HomeIQ.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using .Interfaces;
+using HomeIQ.Services.Services;
+
 
 namespace HomeIQ.API.Controllers
 {
@@ -17,8 +18,7 @@ namespace HomeIQ.API.Controllers
 
         [Route("api/account")]
         [ApiController]
-        public class AccountController : ControllerBase
-        {
+       
             private readonly UserManager<AppUser> _userManager;
             private readonly SignInManager<AppUser> _signInManager;
             private readonly ITokenService _tokenService;
@@ -53,5 +53,5 @@ namespace HomeIQ.API.Controllers
             }
 
         }
-    }
+    
 }
