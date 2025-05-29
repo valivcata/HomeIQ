@@ -11,8 +11,14 @@
 
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPageView}"
-        Route="MainPageView" />
+    Title="Login"
+    ContentTemplate="{DataTemplate views:LoginPageView}"
+    Route="LoginPageView" />
+
+    <ShellContent 
+    Title="Main Page"
+    ContentTemplate="{DataTemplate views:MainPageView}" 
+    Route="MainPageView"  />
+   
 
 </Shell>
