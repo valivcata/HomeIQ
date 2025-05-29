@@ -1,11 +1,11 @@
-﻿using HomeIQ.ViewModels;
 using Microsoft.Maui.Controls;
+using HomeIQ.ViewModels;
 
 namespace HomeIQ.Views
 {
-    public partial class MainPageView : ContentPage
+    public partial class LoginPageView : ContentPage
     {
-        public MainPageView(MainPageViewModel viewModel)
+        public LoginPageView(LoginPageViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = viewModel;
