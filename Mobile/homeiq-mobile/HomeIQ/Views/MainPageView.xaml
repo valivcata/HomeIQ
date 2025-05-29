@@ -1,0 +1,191 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:HomeIQ.ViewModels"
+             x:Class="HomeIQ.Views.MainPageView"
+             BackgroundColor="White"
+             Title="Home">
+
+    <ContentPage.BindingContext>
+        <viewModels:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- Update RowDefinitions: Header, Temperatures, Main Content -->
+    <Grid RowDefinitions="Auto,Auto,*" Padding="20" BackgroundColor="#e0e0e0">
+
+        <!-- HEADER -->
+        <Grid ColumnDefinitions="Auto, *" Margin="0,0,0,20" Grid.Row="0">
+            <Label Text="User"
+                   FontSize="18"
+                   FontFamily="OpenSansSemibold"
+                   TextColor="Black"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Grid.Column="0"/>
+            <Label x:Name="ClockLabel"
+                   FontFamily="Font"
+                   Text="{Binding CurrentTime}" 
+                   TextColor="Black"
+                   FontSize="18"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   Margin="10,0"
+                   Grid.Column="1"/>
+        </Grid>
+
+        <!-- TEMPERATURES ROW -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*"
+              Margin="0,0,0,20"
+              HorizontalOptions="Fill"
+              VerticalOptions="Center">
+            <!-- Room 1 Temperature -->
+            <Frame CornerRadius="25"
+                   BackgroundColor="#ffffff"
+                   Margin="0,0,10,0"
+                   Padding="15"
+                   HasShadow="True"
+                   HeightRequest="70"
+                   VerticalOptions="Center">
+                <Label Text="{Binding LivingRoomTemperatureText}" 
+                       FontSize="20"
+                       TextColor="#1976D2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </Frame>
+            <!-- Room 2 Temperature -->
+            <Frame CornerRadius="25"
+                   BackgroundColor="#ffffff"
+                   Margin="10,0,0,0"
+                   Padding="15"
+                   HasShadow="True"
+                   HeightRequest="70"
+                   VerticalOptions="Center"
+                   Grid.Column="1">
+                <Label Text="{Binding BedroomTemperatureText}" 
+                       FontSize="20"
+                       TextColor="#C62828"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </Frame>
+        </Grid>
+
+        <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT -->
+        <ScrollView Grid.Row="2"
+            VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- CLIMATE CONTROL -->
+                <Frame Padding="10"
+               CornerRadius="15"
+               BackgroundColor="#f2f2f2"
+               Margin="0,0,5,0"
+               HasShadow="True">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <ImageButton Source="{Binding ClimateIcon}"
+                             Command="{Binding ToggleClimateCommand}"
+                             WidthRequest="50"
+                             HeightRequest="50"
+                             BackgroundColor="Transparent" />
+
+                        <StackLayout Grid.Column="1"
+                             Padding="10,0"
+                             VerticalOptions="Center">
+                            <Label Text="Climate is off"
+                           TextColor="Black"
+                           IsVisible="{Binding IsClimateTextVisible}"
+                           FontSize="16" />
+
+                            <StackLayout Orientation="Horizontal"
+                                 IsVisible="{Binding IsClimateSliderVisible}">
+                                <Slider Minimum="18"
+                                Maximum="30"
+                                MinimumTrackColor="Blue"
+                                MaximumTrackColor="Red"
+                                Value="{Binding Temperature, Mode=TwoWay}"
+                                WidthRequest="205" />
+                                <Label Text="{Binding TemperatureLabel}"
+                               TextColor="Black"
+                               Margin="10,0,0,0"
+                               VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- LIGHTS CONTROL -->
+                <Frame Padding="10"
+               CornerRadius="15"
+               Margin="0,0,5,0"
+               BackgroundColor="#f2f2f2"
+               HasShadow="True">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <ImageButton Source="{Binding LightsIcon}"
+                             Command="{Binding ToggleLightsCommand}"
+                             WidthRequest="50"
+                             HeightRequest="50"
+                             BackgroundColor="Transparent" />
+
+                        <Label Text="{Binding LightsStatusText}"
+                       TextColor="Black"
+                       Grid.Column="1"
+                       FontSize="16"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0" />
+                    </Grid>
+                </Frame>
+
+                <Frame CornerRadius="15"
+               BackgroundColor="#f2f2f2"
+               Padding="20"
+               Margin="20"
+               HasShadow="True">
+
+                    <VerticalStackLayout Spacing="15"
+                                 HorizontalOptions="Center">
+
+                        <!-- Stare usa -->
+                        <Label Text="{Binding DoorStatusMessage}"
+                       FontSize="18"
+                       TextColor="{Binding DoorStatusColor}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                        <!-- Buton intrare/ieșire -->
+                        <Button Text="{Binding AccessButtonText}"
+                        Command="{Binding DoorAccessCommand}"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        FontSize="16"
+                        CornerRadius="10"
+                        WidthRequest="250"
+                        HeightRequest="50" />
+
+                        <!-- Istoric acces -->
+                        <Label Text="Access history:"
+                       FontSize="14"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                        <CollectionView ItemsSource="{Binding AccessHistory}"
+                                HeightRequest="150">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding}"
+                                   FontSize="13"
+                                   TextColor="Gray"
+                                   Margin="10,0" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+    </Grid>
+</ContentPage>
