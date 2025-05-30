@@ -1,6 +1,5 @@
-// src/pages/LoginPage.tsx
 import { useState } from "react";
-import { Container, Paper, TextField, Typography, Button, Box } from "@mui/material";
+import { Box, Button, Container, TextField, Typography, Paper } from "@mui/material";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
@@ -20,18 +19,18 @@ export default function LoginPage() {
 
       if (role === "Admin") navigate("/admin");
       else navigate("/user");
-    } catch (err) {
+    } catch (error) {
       alert("Login eșuat");
     }
   };
 
   return (
     <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ p: 4, mt: 8 }}>
+      <Paper elevation={3} sx={{ padding: 4, mt: 8 }}>
         <Typography variant="h5" gutterBottom align="center">
           Autentificare
         </Typography>
-        <Box component="form" onSubmit={handleLogin}>
+        <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
           <TextField
             fullWidth
             margin="normal"
@@ -51,6 +50,7 @@ export default function LoginPage() {
             fullWidth
             type="submit"
             variant="contained"
+            color="primary"
             sx={{ mt: 2 }}
           >
             Conectează-te

@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <Container sx={{ mt: 8, textAlign: "center" }}>
-      <Typography variant="h3" gutterBottom>
-        Bine ai venit la Home Automation
+      <Typography variant="h2" gutterBottom color="blue">
+         HomeIQ
       </Typography>
 
       <Typography variant="body1" sx={{ mb: 4 }}>
