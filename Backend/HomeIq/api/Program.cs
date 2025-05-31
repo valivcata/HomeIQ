@@ -9,8 +9,13 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.WebSockets;
+using Microsoft.AspNetCore.SignalR;
+using api.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // ---------- DATABASE ----------
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
@@ -81,8 +86,14 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSignalR();
+builder.Services.AddHttpClient<DeviceService>();
 
 var app = builder.Build();
+
+app.UseWebSockets();
+
+
 
 app.UseCors(x => x
     .AllowAnyHeader()
@@ -156,5 +167,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<LightHubs>("/lighthub");
 
 app.Run();

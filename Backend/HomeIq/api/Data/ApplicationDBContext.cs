@@ -35,9 +35,9 @@ namespace api.Data
                     NormalizedName = "USER"
                 }
             );
-            builder.Entity<AppUser>()
-          .HasIndex(u => u.CNP)
-          .IsUnique();
+        //    builder.Entity<AppUser>()
+        //  .HasIndex(u => u.CNP)
+        //  .IsUnique();
         }
 
     }

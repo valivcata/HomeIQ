@@ -15,7 +15,7 @@ namespace api.Controllers
 {
     [Route("api/users")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
 
     public class UsersController : ControllerBase
     {

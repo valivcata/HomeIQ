@@ -14,6 +14,21 @@ namespace api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AccessLog",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Direction = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccessLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -34,7 +49,7 @@ namespace api.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Nume = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Prenume = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CNP = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CNP = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CodBluetooth = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -54,6 +69,21 @@ namespace api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EventLog",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,8 +197,8 @@ namespace api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "54126d99-32ef-4fd5-a3ff-4ec080141ff7", null, "User", "USER" },
-                    { "d9961c93-859b-48ab-9c20-94fffaeb4637", null, "Admin", "ADMIN" }
+                    { "0402c0a2-696e-471e-ab0b-719f84ff4e96", null, "Admin", "ADMIN" },
+                    { "75855fe7-6943-462a-951d-0bcd5d125a9f", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -204,6 +234,12 @@ namespace api.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_CNP",
+                table: "AspNetUsers",
+                column: "CNP",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -214,6 +250,9 @@ namespace api.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AccessLog");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -228,6 +267,9 @@ namespace api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "EventLog");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
