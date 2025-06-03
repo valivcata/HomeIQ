@@ -29,8 +29,15 @@ namespace api.Service
         {
             var claims = new List<Claim>
             {
+                        new Claim(ClaimTypes.NameIdentifier, user.Id),
+
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.UserName)
+                // Username separat
+    new Claim("username", user.UserName),
+
+    // Nume și prenume clare
+    new Claim("firstName", user.Prenume),
+    new Claim("lastName", user.Nume)
             };
 
             var roles = await _userManager.GetRolesAsync(user);

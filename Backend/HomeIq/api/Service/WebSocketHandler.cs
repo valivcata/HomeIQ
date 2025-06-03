@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.WebSockets;
 using System.Collections.Concurrent;
+using api.Dto;
 namespace api.Service
 {
     public class WebSocketHandler
     {
         public static ConcurrentBag<WebSocket> Clients { get; } = new ConcurrentBag<WebSocket>();
+        public static SmartHomePayload? LatestPayload { get; set; }
 
         public static async Task BroadcastMessageAsync(string message)
         {

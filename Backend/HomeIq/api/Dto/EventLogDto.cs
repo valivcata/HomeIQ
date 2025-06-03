@@ -7,9 +7,7 @@ namespace api.Dto
 {
     public class EventLogDto
     {
-        public string UserId;
-        public string EventType;
-        public DateTime Timestamp;
-        public string Details;
+        public string EventType { get; set; }
+        public string Details { get; set; }
     }
 }

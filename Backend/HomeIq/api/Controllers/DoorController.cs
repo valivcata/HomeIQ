@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using api.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DoorController : ControllerBase
+    public class DoorHandler : ControllerBase
     {
+
 
         // Constructorul nu mai are DeviceService
 
@@ -20,9 +20,7 @@ namespace api.Controllers
         {
             // Doar trimitem mesajul prin WebSocket către clienți
             await WebSocketHandler.BroadcastMessageAsync("unlock");
-            return Ok(new { message = "Usa deschisa" });
+            return Ok(new { message = "Lumina aprinsă" });
         }
-
-
     }
 }

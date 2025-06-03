@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
-    public class LightState
+    public class TemperatureLog
     {
         public int Id { get; set; }
-        public string RoomName { get; set; }
-        public bool IsOn { get; set; }
-        public DateTime LastChanged { get; set; }
+
+        public double Value { get; set; }
+        public DateTime Timestamp { get; set; }
+        public string Camera { get; set; }
+
+
+
     }
 }

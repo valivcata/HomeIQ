@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace api.Dto
 {
-    public class LightCommandDto
+    public class SetProgramRequest
     {
-        public string RoomName { get; set; }
-        public bool TurnOn { get; set; }
+        public string ProgramName { get; set; } // "weekday", "weekend", "concediu"
     }
 }

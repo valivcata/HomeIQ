@@ -11,43 +11,52 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using api.Interfaces;
 using api.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace api.Controllers
 {
     [ApiController]
-    [Route("api/logs/access")]
-    [Authorize]  // sau Roles = "Admin,User"
+    [Route("api/accesslog")]
     public class AccessLogController : ControllerBase
     {
-        private readonly ApplicationDBContext _ctx;
-        public AccessLogController(ApplicationDBContext ctx) => _ctx = ctx;
-
-        [HttpPost]  // POST /api/logs/access
-        public async Task<IActionResult> Add([FromBody] AccessLogDto dto)
+        private readonly ApplicationDBContext _context;
+        public AccessLogController(ApplicationDBContext context)
         {
+            _context = context;
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddLogFromDto([FromBody] AccessLogDto dto)
+        {
+            // Dacă primești CodBluetooth de la ESP32:
+            // var user = await _context.Users.FirstOrDefaultAsync(u => u.CodBluetooth == dto.CodBluetooth);
+            // if (user == null) return NotFound("User not found");
+            // var userId = user.Id;
+
+            // Dacă acțiunea vine de la frontend cu user logat:
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
             var log = new AccessLog
             {
-                UserId = dto.UserId,
-                Timestamp = dto.Timestamp,
-                Direction = dto.Direction
+                UserId = userId,
+                Direction = dto.Direction,
+                Timestamp = DateTime.UtcNow
             };
-            _ctx.AccessLog.Add(log);
-            await _ctx.SaveChangesAsync();
+            _context.AccessLog.Add(log);
+            await _context.SaveChangesAsync();
             return Ok(log);
         }
 
-        [HttpGet]  // GET /api/logs/access?userId=...&from=...&to=...
-        public async Task<IActionResult> Query([FromQuery] string userId,
-                                               [FromQuery] DateTime? from,
-                                               [FromQuery] DateTime? to)
+        [HttpGet]
+        public async Task<IActionResult> GetLogs([FromQuery] string userId = null)
         {
-            var q = _ctx.AccessLog.AsQueryable();
-            if (userId != null) q = q.Where(x => x.UserId == userId);
-            if (from != null) q = q.Where(x => x.Timestamp >= from);
-            if (to != null) q = q.Where(x => x.Timestamp <= to);
-            var list = await q.OrderByDescending(x => x.Timestamp).ToListAsync();
-            return Ok(list);
+            var logs = _context.AccessLog.AsQueryable();
+            if (!string.IsNullOrEmpty(userId))
+                logs = logs.Where(l => l.UserId == userId);
+            return Ok(await logs.OrderByDescending(l => l.Timestamp).ToListAsync());
         }
-
     }
 }

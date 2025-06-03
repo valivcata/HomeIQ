@@ -3,51 +3,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using api.Dto;
 using api.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using api.Interfaces;
 using api.Data;
-using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
     [ApiController]
-    [Route("api/logs/event")]
-    [Authorize(Roles = "Admin")] // doar admin poate scrie/vede tot
+    [Route("api/eventlog")]
     public class EventLogController : ControllerBase
     {
-        private readonly ApplicationDBContext _ctx;
-        public EventLogController(ApplicationDBContext ctx) => _ctx = ctx;
+        private readonly ApplicationDBContext _context;
+        public EventLogController(ApplicationDBContext context)
+        {
+            _context = context;
+        }
 
         [HttpPost]
-        public async Task<IActionResult> Add(EventLogDto dto)
+        [Authorize]
+        //[AllowAnonymous] // For testing purposes, remove in production
+        public async Task<IActionResult> AddEvent([FromBody] EventLogDto dto)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
             var log = new EventLog
             {
                 EventType = dto.EventType,
-                Timestamp = dto.Timestamp,
+                Timestamp = DateTime.UtcNow,
+                UserId = userId,
                 Details = dto.Details
             };
-            _ctx.EventLog.Add(log);
-            await _ctx.SaveChangesAsync();
+            _context.EventLog.Add(log);
+            await _context.SaveChangesAsync();
             return Ok(log);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Query([FromQuery] string source,
-                                               [FromQuery] string type,
-                                               [FromQuery] DateTime? from,
-                                               [FromQuery] DateTime? to)
+        [HttpGet("test")]
+        public IActionResult Test()
         {
-            var q = _ctx.EventLog.AsQueryable();
-            if (type != null) q = q.Where(x => x.EventType == type);
-            if (from != null) q = q.Where(x => x.Timestamp >= from);
-            if (to != null) q = q.Where(x => x.Timestamp <= to);
-            var list = await q.OrderByDescending(x => x.Timestamp).ToListAsync();
-            return Ok(list);
+            return Ok("EventLogController is alive!");
         }
+
+
+
+
+
+        [HttpGet("last")]
+        //   [Authorize] // sau [AllowAnonymous] temporar pentru test
+        [AllowAnonymous]
+        public IActionResult GetLastEvents()
+        {
+            var events = _context.EventLog
+                .OrderByDescending(e => e.Timestamp)
+                .Take(15)
+                .ToList();
+
+            return Ok(events);
+        }
+
+
+
     }
 }

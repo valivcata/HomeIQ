@@ -1,12 +1,14 @@
 ﻿using HomeIQ.ViewModels;
-namespace HomeIQ.Views;
-public partial class MainPageView : ContentPage
+using Microsoft.Maui.Controls;
+
+namespace HomeIQ.Views
 {
-
-    public MainPageView()
+    public partial class MainPageView : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new MainPageViewModel();
+        public MainPageView(MainPageViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+        }
     }
-
 }

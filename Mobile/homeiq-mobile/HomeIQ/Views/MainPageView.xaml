@@ -5,17 +5,14 @@
              BackgroundColor="White"
              Title="Home">
 
-    <ContentPage.BindingContext>
-        <viewModels:MainPageViewModel />
-    </ContentPage.BindingContext>
 
     <!-- Update RowDefinitions: Header, Temperatures, Main Content -->
     <Grid RowDefinitions="Auto,Auto,*" Padding="20" BackgroundColor="#e0e0e0">
 
         <!-- HEADER -->
         <Grid ColumnDefinitions="Auto, *" Margin="0,0,0,20" Grid.Row="0">
-            <Label Text="User"
-                   FontSize="18"
+            <Label Text="{Binding Username}"
+                   FontSize="26"
                    FontFamily="OpenSansSemibold"
                    TextColor="Black"
                    VerticalOptions="Center"
@@ -25,7 +22,7 @@
                    FontFamily="Font"
                    Text="{Binding CurrentTime}" 
                    TextColor="Black"
-                   FontSize="18"
+                   FontSize="26"
                    VerticalOptions="Center"
                    HorizontalOptions="End"
                    Margin="10,0"
@@ -40,7 +37,7 @@
               VerticalOptions="Center">
             <!-- Room 1 Temperature -->
             <Frame CornerRadius="25"
-                   BackgroundColor="#ffffff"
+                   BackgroundColor="#f2f2f2"
                    Margin="0,0,10,0"
                    Padding="15"
                    HasShadow="True"
@@ -54,7 +51,7 @@
             </Frame>
             <!-- Room 2 Temperature -->
             <Frame CornerRadius="25"
-                   BackgroundColor="#ffffff"
+                   BackgroundColor="#f2f2f2"
                    Margin="10,0,0,0"
                    Padding="15"
                    HasShadow="True"

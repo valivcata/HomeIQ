@@ -13,6 +13,14 @@ namespace api.Data
     {
         public DbSet<AccessLog> AccessLog { get; set; }
         public DbSet<EventLog> EventLog { get; set; }
+        public DbSet<TemperatureLog> TemperatureLog { get; set; }
+        // public DbSet<TemperatureProgram> TemperatureProgram { get; set; }
+        public DbSet<Device> Device { get; set; }
+
+
+        public DbSet<TemperatureProgram> TemperaturePrograms { get; set; }
+        public DbSet<TemperatureInterval> TemperatureIntervals { get; set; }
+
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
         {
@@ -35,9 +43,6 @@ namespace api.Data
                     NormalizedName = "USER"
                 }
             );
-        //    builder.Entity<AppUser>()
-        //  .HasIndex(u => u.CNP)
-        //  .IsUnique();
         }
 
     }

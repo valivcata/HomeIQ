@@ -7,13 +7,13 @@ using Microsoft.Maui.Controls;
 
 namespace HomeIQ.ViewModels
 {
+    [QueryProperty(nameof(Username), "Username")]
     public class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainPageViewModel()
         {
-            // Start clock update
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 CurrentTime = DateTime.Now.ToString("HH:mm:ss");
@@ -23,6 +23,31 @@ namespace HomeIQ.ViewModels
 
         void OnPropertyChanged([CallerMemberName] string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        // Add the following constructor to the MainPageViewModel class to fix the error.  
+        public MainPageViewModel(string username)
+        {
+            Username = username;
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                CurrentTime = DateTime.Now.ToString("HH:mm:ss");
+                return true;
+            });
+        }
+
+        private string _username;
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                if (_username != value)
+                {
+                    _username = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         private string _currentTime;
         public string CurrentTime
@@ -134,7 +159,6 @@ namespace HomeIQ.ViewModels
 
         public string AccessButtonText => IsInside ? "Do you want to exit?" : "Do you want to enter?";
 
-        // ?? Istoric acces
         public ObservableCollection<string> AccessHistory { get; } = new();
 
         public ICommand DoorAccessCommand => new Command(async () =>
@@ -144,19 +168,14 @@ namespace HomeIQ.ViewModels
 
             DoorIsOpen = true;
 
-            // Adauga în istoric
             string action = IsInside ? "exited" : "entered";
             string timestamp = DateTime.Now.ToString("HH:mm:ss");
-            AccessHistory.Insert(0, $"Person {action} at {timestamp}");
+            AccessHistory.Insert(0, $"{Username} {action} at {timestamp}");
 
-            await Task.Delay(5000); // 5s
+            await Task.Delay(1000);
 
             DoorIsOpen = false;
-
-            // Inverseaza starea
             IsInside = !IsInside;
         });
-
-
     }
 }

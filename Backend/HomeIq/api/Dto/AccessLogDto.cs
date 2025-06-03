@@ -7,9 +7,8 @@ namespace api.Dto
 {
     public class AccessLogDto
     {
-        public int Id;
+
         public string UserId;
-        public DateTime Timestamp;
         public string Direction;
     }
 }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace api.Dto
 {
-    public class LightStateDto
+    public class TemperatureRequest
     {
-
-        public string RoomName { get; set; }
-        public bool IsOn { get; set; }
+        public int Temperature { get; set; }
     }
 }
