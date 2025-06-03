@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using HomeIQ.Views;
 using HomeIQ.ViewModels;
+using HomeIQ.Services;
 
 namespace HomeIQ
 {
@@ -24,11 +25,11 @@ namespace HomeIQ
 
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPageView>();
-            builder.Services.AddTransient<MainPageView>(sp =>
-            {
-                var loginVm = sp.GetRequiredService<LoginPageViewModel>();
-                return new MainPageView(new MainPageViewModel(loginVm.Username));
-            });
+
+            builder.Services.AddTransient<SecondPageViewModel>();
+            builder.Services.AddTransient<SecondPageView>();
+
+            builder.Services.AddSingleton<ApiService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

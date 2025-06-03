@@ -36,6 +36,7 @@
         <Label Text="{Binding ErrorMessage}"
                TextColor="Red"
                FontSize="18"
+               FontAttributes="Bold"
                HorizontalTextAlignment="Center"
                Margin="0,75,0,0"
                IsVisible="{Binding HasError}" />

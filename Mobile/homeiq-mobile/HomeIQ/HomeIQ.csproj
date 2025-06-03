@@ -60,6 +60,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Controllers\**" />
+	  <AndroidResource Remove="Models\**" />
+	  <AndroidResource Remove="Service\**" />
+	  <Compile Remove="Controllers\**" />
+	  <Compile Remove="Models\**" />
+	  <Compile Remove="Service\**" />
+	  <EmbeddedResource Remove="Controllers\**" />
+	  <EmbeddedResource Remove="Models\**" />
+	  <EmbeddedResource Remove="Service\**" />
+	  <MauiCss Remove="Controllers\**" />
+	  <MauiCss Remove="Models\**" />
+	  <MauiCss Remove="Service\**" />
+	  <MauiXaml Remove="Controllers\**" />
+	  <MauiXaml Remove="Models\**" />
+	  <MauiXaml Remove="Service\**" />
+	  <None Remove="Controllers\**" />
+	  <None Remove="Models\**" />
+	  <None Remove="Service\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <AndroidResource Remove="Platforms\Android\Resources\values\XMLFile1.xml" />
 	</ItemGroup>
 
@@ -87,6 +108,7 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Plugin.BLE" Version="3.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -97,6 +119,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\LoginPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SecondPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

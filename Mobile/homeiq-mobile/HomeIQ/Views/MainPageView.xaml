@@ -31,41 +31,83 @@
 
         <!-- TEMPERATURES ROW -->
         <Grid Grid.Row="1"
-              ColumnDefinitions="*,*"
-              Margin="0,0,0,20"
-              HorizontalOptions="Fill"
-              VerticalOptions="Center">
-            <!-- Room 1 Temperature -->
-            <Frame CornerRadius="25"
-                   BackgroundColor="#f2f2f2"
-                   Margin="0,0,10,0"
-                   Padding="15"
-                   HasShadow="True"
-                   HeightRequest="70"
-                   VerticalOptions="Center">
-                <Label Text="{Binding LivingRoomTemperatureText}" 
-                       FontSize="20"
-                       TextColor="#1976D2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-            </Frame>
-            <!-- Room 2 Temperature -->
-            <Frame CornerRadius="25"
-                   BackgroundColor="#f2f2f2"
-                   Margin="10,0,0,0"
-                   Padding="15"
-                   HasShadow="True"
-                   HeightRequest="70"
+      ColumnDefinitions="*,*"
+      Margin="0,0,0,20"
+      HorizontalOptions="Fill"
+      VerticalOptions="Center"
+      RowSpacing="0"
+      ColumnSpacing="20">
+
+            <!-- Camera 1 -->
+            <Frame CornerRadius="30"
+       BackgroundColor="#f2f2f2"
+       Padding="0"
+       HasShadow="True"
+       HeightRequest="140"
+       VerticalOptions="Center"
+       HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout Spacing="6" Padding="20,10" HorizontalOptions="FillAndExpand">
+                    <Label Text="Camera 1"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="#1976D2"
+               HorizontalOptions="Center"/>
+                    <Label Text="{Binding LivingRoomTemperatureText}"
+               FontSize="36"
+               FontAttributes="Bold"
+               TextColor="#1976D2"
+               HorizontalOptions="Center"/>
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="Umiditate:"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="#1976D2"
+                   VerticalOptions="Center"/>
+                        <Label Text="{Binding LivingRoomHumidityText}"
+                   FontSize="21"
+                   TextColor="#1976D2"
                    VerticalOptions="Center"
-                   Grid.Column="1">
-                <Label Text="{Binding BedroomTemperatureText}" 
-                       FontSize="20"
-                       TextColor="#C62828"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
+                   Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Camera 2 -->
+            <Frame CornerRadius="30"
+       BackgroundColor="#f2f2f2"
+       Padding="0"
+       HasShadow="True"
+       HeightRequest="140"
+       VerticalOptions="Center"
+       HorizontalOptions="FillAndExpand"
+       Grid.Column="1">
+                <VerticalStackLayout Spacing="6" Padding="20,10" HorizontalOptions="FillAndExpand">
+                    <Label Text="Camera 2"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="#C62828"
+               HorizontalOptions="Center"/>
+                    <Label Text="{Binding BedroomTemperatureText}"
+               FontSize="36"
+               FontAttributes="Bold"
+               TextColor="#C62828"
+               HorizontalOptions="Center"/>
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="Umiditate:"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="#C62828"
+                   VerticalOptions="Center"/>
+                        <Label Text="{Binding BedroomHumidityText}"
+                   FontSize="22"
+                   TextColor="#C62828"
+                   VerticalOptions="Center"
+                   Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
             </Frame>
         </Grid>
-
+        
         <!-- MAIN CONTENT -->
         <!-- MAIN CONTENT -->
         <ScrollView Grid.Row="2"
@@ -74,41 +116,41 @@
 
                 <!-- CLIMATE CONTROL -->
                 <Frame Padding="10"
-               CornerRadius="15"
-               BackgroundColor="#f2f2f2"
-               Margin="0,0,5,0"
-               HasShadow="True">
-                    <Grid ColumnDefinitions="Auto,*">
-                        <ImageButton Source="{Binding ClimateIcon}"
-                             Command="{Binding ToggleClimateCommand}"
-                             WidthRequest="50"
-                             HeightRequest="50"
-                             BackgroundColor="Transparent" />
-
-                        <StackLayout Grid.Column="1"
-                             Padding="10,0"
-                             VerticalOptions="Center">
-                            <Label Text="Climate is off"
-                           TextColor="Black"
-                           IsVisible="{Binding IsClimateTextVisible}"
-                           FontSize="16" />
-
-                            <StackLayout Orientation="Horizontal"
-                                 IsVisible="{Binding IsClimateSliderVisible}">
-                                <Slider Minimum="18"
-                                Maximum="30"
-                                MinimumTrackColor="Blue"
-                                MaximumTrackColor="Red"
-                                Value="{Binding Temperature, Mode=TwoWay}"
-                                WidthRequest="205" />
-                                <Label Text="{Binding TemperatureLabel}"
-                               TextColor="Black"
-                               Margin="10,0,0,0"
-                               VerticalOptions="Center" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Grid>
+       CornerRadius="15"
+       BackgroundColor="#f2f2f2"
+       Margin="0,0,5,0"
+       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Setează temperatura"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center"/>
+                        <Slider Minimum="18"
+                            Maximum="30"
+                            Value="{Binding Temperature, Mode=TwoWay}"
+                            MinimumTrackColor="Blue"
+                            MaximumTrackColor="Red"
+                            WidthRequest="150"
+                            ScaleY="2"
+                            ScaleX="2"
+                            ThumbColor="Black"
+                            HorizontalOptions="Center"/>
+                        <Label Text="{Binding TemperatureLabel}"
+               FontSize="20"
+               TextColor="Black"
+               HorizontalOptions="Center"/>
+                        <Button Text="Setează"
+                Command="{Binding SetTemperatureCommand}"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="10"
+                WidthRequest="120"
+                HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
                 </Frame>
+
 
                 <!-- LIGHTS CONTROL -->
                 <Frame Padding="10"
@@ -118,10 +160,10 @@
                HasShadow="True">
                     <Grid ColumnDefinitions="Auto,*">
                         <ImageButton Source="{Binding LightsIcon}"
-                             Command="{Binding ToggleLightsCommand}"
-                             WidthRequest="50"
-                             HeightRequest="50"
-                             BackgroundColor="Transparent" />
+                         Command="{Binding ToggleLightsCommand}"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         BackgroundColor="Transparent" />   
 
                         <Label Text="{Binding LightsStatusText}"
                        TextColor="Black"
@@ -135,7 +177,8 @@
                 <Frame CornerRadius="15"
                BackgroundColor="#f2f2f2"
                Padding="20"
-               Margin="20"
+               HeightRequest="150"
+               Margin="0,0,5,0"
                HasShadow="True">
 
                     <VerticalStackLayout Spacing="15"
@@ -158,31 +201,23 @@
                         WidthRequest="250"
                         HeightRequest="50" />
 
-                        <!-- Istoric acces -->
-                        <Label Text="Access history:"
-                       FontSize="14"
-                       TextColor="Black"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center" />
-
-                        <CollectionView ItemsSource="{Binding AccessHistory}"
-                                HeightRequest="150">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Label Text="{Binding}"
-                                   FontSize="13"
-                                   TextColor="Gray"
-                                   Margin="10,0" />
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                        
 
                     </VerticalStackLayout>
                 </Frame>
-
+            <HorizontalStackLayout
+                 Spacing="10"
+                 VerticalOptions="End"
+                 HorizontalOptions="Start">
+                <Button Text="Main Page"
+                 Command="{Binding NavigateCommand}"
+                 CommandParameter="MainPageView"/>
+                <Button Text="Second Page"
+                 Command="{Binding NavigateCommand}"
+                 CommandParameter="SecondPageView"/>
+            </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
-
-
+        
     </Grid>
 </ContentPage>

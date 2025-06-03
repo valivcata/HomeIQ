@@ -1,39 +1,37 @@
-using System;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using HomeIQ.Services;
+using System.Collections.ObjectModel;
 using Microsoft.Maui.Controls;
+using System.Diagnostics;
 
 namespace HomeIQ.ViewModels
 {
+
     [QueryProperty(nameof(Username), "Username")]
     public class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private readonly ApiService _apiService = new ApiService();
+
         public MainPageViewModel()
         {
+
+            // Pornește timerul la fiecare secundă
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
+                _ = RefreshTemperaturesAsync();
                 CurrentTime = DateTime.Now.ToString("HH:mm:ss");
-                return true;
+                return true; // continuă timerul
             });
         }
 
         void OnPropertyChanged([CallerMemberName] string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-        // Add the following constructor to the MainPageViewModel class to fix the error.  
-        public MainPageViewModel(string username)
-        {
-            Username = username;
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                CurrentTime = DateTime.Now.ToString("HH:mm:ss");
-                return true;
-            });
-        }
 
         private string _username;
         public string Username
@@ -63,29 +61,81 @@ namespace HomeIQ.ViewModels
             }
         }
 
-        private bool _climateOn;
-        public bool ClimateOn
+        private string _livingRoomTemperatureText;
+        public string LivingRoomTemperatureText
         {
-            get => _climateOn;
+            get => _livingRoomTemperatureText;
             set
             {
-                if (_climateOn != value)
+                if (_livingRoomTemperatureText != value)
                 {
-                    _climateOn = value;
+                    _livingRoomTemperatureText = value;
                     OnPropertyChanged();
-                    OnPropertyChanged(nameof(ClimateIcon));
-                    OnPropertyChanged(nameof(IsClimateSliderVisible));
-                    OnPropertyChanged(nameof(IsClimateTextVisible));
                 }
             }
         }
 
-        public string ClimateIcon => ClimateOn ? "power_on.png" : "power_off.png";
-        public bool IsClimateSliderVisible => ClimateOn;
-        public bool IsClimateTextVisible => !ClimateOn;
+        private string _bedroomTemperatureText;
+        public string BedroomTemperatureText
+        {
+            get => _bedroomTemperatureText;
+            set
+            {
+                if (_bedroomTemperatureText != value)
+                {
+                    _bedroomTemperatureText = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-        public ICommand ToggleClimateCommand => new Command(() => ClimateOn = !ClimateOn);
+        private string _livingRoomHumidityText;
+        public string LivingRoomHumidityText
+        {
+            get => _livingRoomHumidityText;
+            set { _livingRoomHumidityText = value; OnPropertyChanged(); }
+        }
 
+        private string _bedroomHumidityText;
+        public string BedroomHumidityText
+        {
+            get => _bedroomHumidityText;
+            set { _bedroomHumidityText = value; OnPropertyChanged(); }
+        }
+
+        // Exemplu: incarcare temperaturi din backend
+        public async Task RefreshTemperaturesAsync()
+        {
+            var data = await _apiService.GetCurrentTemperatureAsync();
+            LivingRoomTemperatureText = data?.Camera1?.Temperature != null
+                ? $"{data.Camera1.Temperature:0.0}°C"
+                : "-";
+            BedroomTemperatureText = data?.Camera2?.Temperature != null
+                ? $"{data.Camera2.Temperature:0.0}°C"
+                : "-";
+            LivingRoomHumidityText = data?.Camera1?.Humidity != null
+            ? $"{data.Camera1.Humidity:0}%"
+            : "-";
+            BedroomHumidityText = data?.Camera2?.Humidity != null
+                ? $"{data.Camera2.Humidity:0}%"
+                : "-";
+            LedState = data?.Camera1?.LedState;
+        }
+
+        //public MainPageViewModel(string username)
+        //{
+        //    Username = username;
+        //}
+
+        public ICommand SetTemperatureCommand => new Command(async () =>
+        {
+            await _apiService.SetTemperatureAsync(Temperature);
+        });
+
+      
+
+        public string LightsIcon => LedState == true ? "power_on.png" : "power_off.png";
+        public string LightsStatusText => LedState == true ? "Lights are on" : "Lights are off";
         private bool _lightsOn;
         public bool LightsOn
         {
@@ -102,9 +152,36 @@ namespace HomeIQ.ViewModels
             }
         }
 
-        public string LightsIcon => LightsOn ? "power_on.png" : "power_off.png";
-        public string LightsStatusText => LightsOn ? "Lights are on" : "Lights are off";
-        public ICommand ToggleLightsCommand => new Command(() => LightsOn = !LightsOn);
+
+        public ICommand ToggleLightsCommand => new Command(async () =>
+        {
+            if (LightsOn)
+            {
+                await _apiService.TurnLightOffAsync();
+                LightsOn = false;
+            }
+            else
+            {
+                await _apiService.TurnLightOnAsync();
+                LightsOn = true;
+            }
+        });
+
+        private bool? _ledState;
+        public bool? LedState
+        {
+            get => _ledState;
+            set
+            {
+                if (_ledState != value)
+                {
+                    _ledState = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(LightsIcon));
+                    OnPropertyChanged(nameof(LightsStatusText));
+                }
+            }
+        }
 
         private int _temperature = 22;
         public int Temperature
@@ -121,7 +198,7 @@ namespace HomeIQ.ViewModels
             }
         }
 
-        public string TemperatureLabel => $"{Temperature}�C";
+        public string TemperatureLabel => $"{Temperature}°C";
 
         private bool _isInside = false;
         public bool IsInside
@@ -154,6 +231,10 @@ namespace HomeIQ.ViewModels
             }
         }
 
+
+        
+
+      
         public string DoorStatusMessage => DoorIsOpen ? "The door is open" : "The door is closed";
         public Color DoorStatusColor => DoorIsOpen ? Colors.Green : Colors.Gray;
 
@@ -176,6 +257,12 @@ namespace HomeIQ.ViewModels
 
             DoorIsOpen = false;
             IsInside = !IsInside;
+        });
+
+        public ICommand NavigateCommand => new Command<string>(async (route) =>
+        {
+            if (!string.IsNullOrEmpty(route))
+                await Shell.Current.GoToAsync($"//{route}", true);
         });
     }
 }
